@@ -1,4 +1,4 @@
-# MLwithTensorFlowLite
+# TrashScanML
 
 An Android application that combines on-device machine learning (TensorFlow Lite) with a Firebase-backed social/content experience — user accounts, a home feed, image galleries, comments, and result history.
 

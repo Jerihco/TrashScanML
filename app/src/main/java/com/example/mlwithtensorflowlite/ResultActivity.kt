@@ -20,7 +20,7 @@ import java.util.Date
 class ResultActivity : AppCompatActivity() {
 
     private val TAG = "ResultActivity"
-    private val GEMINI_API_KEY = "AIzaSyC6aym3SKFotZMvucNgcQBjS4H6iX8G9a0"
+    private val GEMINI_API_KEY = ""
     private val GEMINI_URL =
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=$GEMINI_API_KEY"
 

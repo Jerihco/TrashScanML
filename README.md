@@ -2,11 +2,6 @@
 
 **TrashScan** is an Android application that uses a Convolutional Neural Network (CNN), deployed on-device via TensorFlow Lite, to classify waste in real time from a phone camera. It identifies waste as **plastic, glass, metal, paper, or cardboard**, then provides disposal guidance and recycling tips — with gamified community features to encourage continued use.
 
-
-## Problem it solves
-
-Waste misclassification at the household level remains a persistent issue in the Philippines. Despite the Ecological Solid Waste Management Act (RA 9003), many people still lack real-time, accessible tools to correctly segregate waste — static posters and campaigns don't help at the actual moment of disposal, and materials that look similar (e.g. coated paper vs. plastic) are frequently mis-sorted. TrashScan puts real-time classification and disposal guidance directly in users' hands via their phone camera.
-
 ## Features
 
 - **On-device ML inference** — a CNN model (trained on TrashNet plus locally collected images from junkshops in San Pedro, Laguna) bundled as TensorFlow Lite (`app/src/main/ml/model.tflite`), classifying waste into plastic, glass, metal, paper, or cardboard

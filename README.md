@@ -1,26 +1,34 @@
 # TrashScanML
 
-An Android application that combines on-device machine learning (TensorFlow Lite) with a Firebase-backed social/content experience — user accounts, a home feed, image galleries, comments, and result history.
+**TrashScan** is an Android application that uses a Convolutional Neural Network (CNN), deployed on-device via TensorFlow Lite, to classify waste in real time from a phone camera. It identifies waste as **plastic, glass, metal, paper, or cardboard**, then provides disposal guidance and recycling tips — with gamified community features to encourage continued use.
+
+
+## Problem it solves
+
+Waste misclassification at the household level remains a persistent issue in the Philippines. Despite the Ecological Solid Waste Management Act (RA 9003), many people still lack real-time, accessible tools to correctly segregate waste — static posters and campaigns don't help at the actual moment of disposal, and materials that look similar (e.g. coated paper vs. plastic) are frequently mis-sorted. TrashScan puts real-time classification and disposal guidance directly in users' hands via their phone camera.
 
 ## Features
 
-- **On-device ML inference** using a bundled TensorFlow Lite model (`app/src/main/ml/model.tflite`)
-- **User authentication** via Firebase Auth (Login / Register screens)
+- **On-device ML inference** — a CNN model (trained on TrashNet plus locally collected images from junkshops in San Pedro, Laguna) bundled as TensorFlow Lite (`app/src/main/ml/model.tflite`), classifying waste into plastic, glass, metal, paper, or cardboard
+- **AI-generated disposal guidance** via the **Gemini API**, including recycling tips, recycling rate, and decomposition time for the detected material
+- **Camera & Gallery scanning** — scan waste live or classify a photo from the gallery
+- **User authentication** via Firebase Auth (Login / Register)
 - **Cloud data** via Firebase Firestore and Firebase Functions
+- **App security** via Firebase App Check
 - **Image hosting/upload** via Cloudinary
-- **Generative AI integration** (Firebase Generative AI SDK)
-- **Social features**: posts, comments, and a home feed
-- **History tracking** of past results/predictions
+- **Gamified engagement**: achievement badges, progress/usage statistics, and a community feed with comments to encourage continued participation
+- **History tracking** of previously scanned items
 - **Onboarding**: Welcome and Tutorial screens for first-time users
+- **Info tab** with educational content on each waste category and proper disposal methods
 
-<!-- TODO: Add a 2-3 sentence description of what the app actually predicts/does with the ML model, e.g. "Users take a photo of X, and the app classifies it as Y using an on-device TFLite model." -->
 
 ## Tech Stack
 
 | Category | Technology |
 |---|---|
 | Language | Kotlin, Java |
-| ML | TensorFlow Lite |
+| ML | TensorFlow Lite (CNN, trained on TrashNet + local dataset) |
+| Generative AI | Gemini API (via Firebase Generative AI SDK) |
 | Backend | Firebase (Auth, Firestore, Functions, App Check) |
 | Networking | Volley, OkHttp |
 | Media | Cloudinary |
@@ -47,14 +55,25 @@ MLwithTensorFlowLite/
 
 ### Key screens
 
-- `WelcomeActivity` — onboarding entry point
+- `WelcomeActivity` — introduces TrashScan with a "Get Started" button
+- `TutorialActivity` — step-by-step guide on how to use the app
 - `LoginActivity` / `RegisterActivity` — authentication
-- `HomeActivity` — main feed
-- `MainActivity` — core ML feature screen
-- `GalleryActivity` — image selection/browsing
-- `TutorialActivity` — guided walkthrough
-- `CommentsActivity` — post comments
-- `ResultActivity` — ML inference results
-- `InfoActivity` — app/model information
+- `HomeActivity` — main dashboard with "Use Camera" and "View Gallery" actions, plus nav bar (Home, Camera, Gallery, Info)
+- `MainActivity` — core ML feature screen (camera capture)
+- `GalleryActivity` — displays previously captured/scanned images
+- `ResultActivity` — shows detected waste type, description, disposal instructions, recycling tips, recycling rate, and decomposition time
+- `CommentsActivity` — community feed / comments on posts
+- `InfoActivity` — educational content on each waste category (Paper, Plastic, Metal, Glass, etc.)
 
+### User roles
+
+- **General Users** — scan and identify waste for proper disposal
+- **Waste Personnel** — involved in waste collection, sorting, and disposal; help validate and improve the system
+
+## Model
+
+- **Architecture:** Convolutional Neural Network (CNN)
+- **Classes:** plastic, glass, metal, paper, cardboard
+- **Training data:** [TrashNet](https://github.com/garythung/trashnet) dataset, augmented with locally collected images from junkshops in San Pedro, Laguna, to better reflect waste commonly found in the Philippines
+- **Reference benchmarks from related literature:** CNN-based waste classifiers in prior studies report accuracy in the 80–99% range depending on dataset and architecture (e.g. Sami et al., 2020 — 90%; Bobulski & Kubanek — 99.92% on a 4-category plastic subset)
 

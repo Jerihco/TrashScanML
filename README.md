@@ -2,14 +2,11 @@
 
 An Android application that combines on-device machine learning (TensorFlow Lite) with a Firebase-backed social/content experience — user accounts, a home feed, image galleries, comments, and result history.
 
-> **Note:** This README was drafted from the visible project structure. Replace the placeholder sections (marked below) with details specific to what your app actually does.
-
 ## Features
 
 - **On-device ML inference** using a bundled TensorFlow Lite model (`app/src/main/ml/model.tflite`)
 - **User authentication** via Firebase Auth (Login / Register screens)
 - **Cloud data** via Firebase Firestore and Firebase Functions
-- **App security** via Firebase App Check
 - **Image hosting/upload** via Cloudinary
 - **Generative AI integration** (Firebase Generative AI SDK)
 - **Social features**: posts, comments, and a home feed
@@ -60,46 +57,4 @@ MLwithTensorFlowLite/
 - `ResultActivity` — ML inference results
 - `InfoActivity` — app/model information
 
-## Getting Started
 
-### Prerequisites
-
-- Android Studio (latest stable)
-- JDK 11+
-- A Firebase project (see setup below)
-
-### Setup
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/<your-username>/MLwithTensorFlowLite.git
-   ```
-2. Open the project in Android Studio.
-3. **Firebase configuration:** this project requires its own `google-services.json`, which is **not included** in this repository for security reasons.
-   - Create a Firebase project at [console.firebase.google.com](https://console.firebase.google.com)
-   - Register an Android app with package name `com.example.mlwithtensorflowlite`
-   - Download `google-services.json` and place it in `app/`
-4. <!-- TODO: Add any Cloudinary / API key setup instructions, e.g. adding keys to local.properties -->
-5. Sync Gradle and run the app on an emulator or device.
-
-## Environment Variables / Secrets
-
-The following files are excluded from version control and must be provided locally:
-
-- `app/google-services.json` — Firebase configuration
-- `local.properties` — local SDK path
-- <!-- TODO: list any Cloudinary or Generative AI API keys and where they're expected -->
-
-## Model
-
-The TensorFlow Lite model is located at `app/src/main/ml/model.tflite`.
-
-<!-- TODO: Describe what the model was trained on, input/output format, and accuracy if known. -->
-
-## Contributing
-
-<!-- TODO: Add contribution guidelines if this is a team/open project -->
-
-## License
-
-<!-- TODO: Add a license (e.g. MIT) or note that this is a private/personal project -->
